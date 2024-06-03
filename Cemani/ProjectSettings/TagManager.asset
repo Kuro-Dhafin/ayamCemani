@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Bullet
+  - Enemy
+  - EnemyBullet
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Player
+  - EnemyBullet
+  - PlayerBullet
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: CollectHealth
+    uniqueID: 256139121
+    locked: 0
+  - name: Bullet
+    uniqueID: 3407099875
+    locked: 0
+  - name: Enemy_Bullet
+    uniqueID: 2792359155
+    locked: 0
+  - name: Player
+    uniqueID: 547889353
+    locked: 0
+  - name: Enemy
+    uniqueID: 1861701849
+    locked: 0
