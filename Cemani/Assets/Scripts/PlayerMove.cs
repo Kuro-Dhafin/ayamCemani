@@ -37,6 +37,7 @@ public class PlayerMove : MonoBehaviour
     private PlayerHealth playerHealth;  // Referensi ke komponen PlayerHealth
     private Animator animator;  // Referensi ke komponen Animator
 
+    private bool isPaused = false;  // Status apakah permainan sedang dijeda
 
     void Awake()
     {
@@ -44,11 +45,13 @@ public class PlayerMove : MonoBehaviour
         playerHealth = GetComponent<PlayerHealth>();  // Mendapatkan komponen PlayerHealth dari GameObject
         animator = GetComponent<Animator>();  // Mendapatkan komponen Animator dari GameObject
         playerCollider = GetComponent<Collider2D>();
-
     }
 
     void Update()
     {
+        // Jangan lakukan apa-apa jika permainan dijeda
+        if (isPaused) return;
+
         // Mendapatkan input gerakan dari pemain
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
@@ -115,10 +118,8 @@ public class PlayerMove : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Menggerakkan pemain dengan kecepatan konstan
-        //rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
-
-        //rb.velocity = new Vector2(moveInput.x * moveSpeed, moveInput.y * moveSpeed);
+        // Jangan lakukan apa-apa jika permainan dijeda
+        if (isPaused) return;
 
         if (isDashing)
         {
@@ -154,5 +155,12 @@ public class PlayerMove : MonoBehaviour
             playerHealth.TakeDamage(10);  // Mengurangi health pemain sebesar 10
             Destroy(collision.gameObject);  // matikan / destroy peluru musuh
         }
+    }
+
+    // Method to set the pause state
+    public void SetPause(bool pause)
+    {
+        isPaused = pause;
+        rb.velocity = Vector2.zero;  // Stop player movement when paused
     }
 }

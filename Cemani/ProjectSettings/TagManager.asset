@@ -44,10 +44,10 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: CollectHealth
+  - name: Ground
     uniqueID: 256139121
     locked: 0
-  - name: Bullet
+  - name: Collision
     uniqueID: 3407099875
     locked: 0
   - name: Enemy_Bullet
