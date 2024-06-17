@@ -478,18 +478,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cemani
       objectReference: {fileID: 0}
-    - target: {fileID: 8978300655792951626, guid: b060fc4a0abdfae4bbc9f280c8c3b2d6, type: 3}
-      propertyPath: RollTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8978300655792951626, guid: b060fc4a0abdfae4bbc9f280c8c3b2d6, type: 3}
-      propertyPath: dashSpeed
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8978300655792951626, guid: b060fc4a0abdfae4bbc9f280c8c3b2d6, type: 3}
-      propertyPath: isRolling
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
