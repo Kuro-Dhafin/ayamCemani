@@ -158,8 +158,8 @@ public class Boss : MonoBehaviour
     {
         if (player == null) return;  // Jika pemain sudah dihancurkan, hentikan fungsi
 
-        int bulletCount = 5;  // Jumlah peluru yang ditembakkan
-        float spreadAngle = 45f;  // Sudut penyebaran
+        int bulletCount = 4;  // Jumlah peluru yang ditembakkan
+        float spreadAngle = 90f;  // Sudut penyebaran
 
         for (int i = 0; i < bulletCount; i++)
         {

@@ -153,7 +153,7 @@ PrefabInstance:
       objectReference: {fileID: 4089518430029482246, guid: 6c60f191c235328418b14a318233f19e, type: 3}
     - target: {fileID: 2028574588691607292, guid: 277ef594d524cea47be2010fb4054f3d, type: 3}
       propertyPath: shotsPerCycle
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2028574588691607292, guid: 277ef594d524cea47be2010fb4054f3d, type: 3}
       propertyPath: spawnPoints.Array.data[0]
@@ -230,6 +230,14 @@ PrefabInstance:
     - target: {fileID: 4543564476273110462, guid: 277ef594d524cea47be2010fb4054f3d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201615146494629738, guid: 277ef594d524cea47be2010fb4054f3d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.159
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201615146494629738, guid: 277ef594d524cea47be2010fb4054f3d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.031
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
