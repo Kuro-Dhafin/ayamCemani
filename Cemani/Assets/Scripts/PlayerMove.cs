@@ -15,6 +15,8 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     private float moveSpeed = 5.0f;  // Kecepatan gerakan pemain
 
+    private Vector3 originalScale;
+
     //test dash
     [SerializeField]
     private float dashSpeed = 10.0f;  // Kecepatan dash pemain
@@ -45,6 +47,7 @@ public class PlayerMove : MonoBehaviour
         playerHealth = GetComponent<PlayerHealth>();  // Mendapatkan komponen PlayerHealth dari GameObject
         animator = GetComponent<Animator>();  // Mendapatkan komponen Animator dari GameObject
         playerCollider = GetComponent<Collider2D>();
+        originalScale = transform.localScale;  // Simpan scale asli
     }
 
     void Update()
@@ -93,6 +96,7 @@ public class PlayerMove : MonoBehaviour
             moveSpeed -= rollBoost;
             rollOnce = false;
             isRolling = false;
+            isDashing = false;
             playerCollider.enabled = true;  // Aktifkan kembali collider pemain
         }
 
@@ -106,7 +110,7 @@ public class PlayerMove : MonoBehaviour
         // Membalikkan sprite pemain berdasarkan arah gerakan
         if (moveInput.x != 0)
         {
-            transform.localScale = new Vector3(Mathf.Sign(moveInput.x), 1, 1);
+            transform.localScale = new Vector3(Mathf.Sign(moveInput.x) * originalScale.x, originalScale.y, originalScale.z);
         }
 
         // Menembak peluru saat tombol mouse kiri ditekan

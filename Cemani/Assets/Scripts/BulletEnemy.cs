@@ -35,16 +35,6 @@ public class BulletEnemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log("Collision detected with: " + collision.gameObject.name);  // Debug log untuk memeriksa tabrakan
-
-        // Jika peluru bertabrakan dengan musuh, musuh akan dihancurkan
-        //if (collision.gameObject.CompareTag("Enemy"))
-        //{
-           // Debug.Log("Hit Enemy: " + collision.gameObject.name);  // Debug log untuk memeriksa tabrakan dengan musuh
-            //Destroy(collision.gameObject);  // Menghancurkan musuh
-            //Destroy(gameObject);  // Menghancurkan peluru
-        //}
-
         // Jika peluru bertabrakan dengan pemain, kurangi health pemain
         if (collision.gameObject.CompareTag("Player"))
         {
