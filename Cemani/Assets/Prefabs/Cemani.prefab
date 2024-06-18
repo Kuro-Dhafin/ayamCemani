@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 8978300655792951626}
   - component: {fileID: 3056661077350557919}
   - component: {fileID: 6816015921846217091}
+  - component: {fileID: 6735142552344425781}
   - component: {fileID: 8794952239407704772}
   m_Layer: 0
   m_Name: Cemani
@@ -107,8 +108,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 256139121
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 0fae9402b23133848a7d3829e58147b9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -234,6 +235,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6735142552344425781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5876952705955818848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e9380b36781fdc4ea585e6fa5a2ef27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 100
+  healthBar: {fileID: 0}
+  gameOverMenu: {fileID: 0}
 --- !u!114 &8794952239407704772
 MonoBehaviour:
   m_ObjectHideFlags: 0

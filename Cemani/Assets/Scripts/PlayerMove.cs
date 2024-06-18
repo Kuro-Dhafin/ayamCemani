@@ -23,6 +23,7 @@ public class PlayerMove : MonoBehaviour
     private bool isDashing = false;  // Status apakah pemain sedang dash
     private float dashTime;  // Waktu tersisa untuk dash
     private Collider2D playerCollider;
+    private Vector3 originalScale;
 
     public float rollBoost = 2f;
     private float rollTime;

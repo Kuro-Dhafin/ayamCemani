@@ -1271,11 +1271,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5473480881466896047, guid: b060fc4a0abdfae4bbc9f280c8c3b2d6, type: 3}
       propertyPath: m_SortingLayer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5473480881466896047, guid: b060fc4a0abdfae4bbc9f280c8c3b2d6, type: 3}
       propertyPath: m_SortingLayerID
-      value: 256139121
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5876952705955818848, guid: b060fc4a0abdfae4bbc9f280c8c3b2d6, type: 3}
       propertyPath: m_Name
