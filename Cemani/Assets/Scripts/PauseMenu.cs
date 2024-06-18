@@ -9,16 +9,23 @@ public class POZE : MonoBehaviour
 
     private Bullet[] bullets;
     private PlayerMove playerMove;
+    private GameOverMenu gameOverMenu; // Reference to the GameOverMenu script
 
     void Start()
     {
         PauseMenu.SetActive(false);
         bullets = FindObjectsOfType<Bullet>();
         playerMove = FindObjectOfType<PlayerMove>();  // Find the PlayerMove script in the scene
+        gameOverMenu = FindObjectOfType<GameOverMenu>(); // Find the GameOverMenu script in the scene
     }
 
     public void pause()
     {
+        if (gameOverMenu.IsGameOverActive()) // Check if game over screen is active
+        {
+            return;
+        }
+
         PauseMenu.SetActive(true);
         Time.timeScale = 0;
         isGamePaused = true;
@@ -55,19 +62,17 @@ public class POZE : MonoBehaviour
         playerMove.SetPause(false);
     }
 
-    public void Update()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isGamePaused)
             {
                 resume();
-                Debug.Log("Game should NOT be paused rn");
             }
             else
             {
                 pause();
-                Debug.Log("Game should be paused rn");
             }
         }
     }

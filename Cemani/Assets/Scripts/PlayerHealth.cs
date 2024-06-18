@@ -5,37 +5,38 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int maxHealth = 100;  // Health maksimum pemain
-    public int currentHealth;  // Health saat ini pemain
-    public Image healthBar;  // UI health bar untuk menampilkan health pemain
+    public int maxHealth = 100;  // Maximum health of the player
+    public int currentHealth;  // Current health of the player
+    public Image healthBar;  // UI health bar to display player's health
+    public GameOverMenu gameOverMenu;  // Reference to the GameOverMenu script
 
     void Start()
     {
-        currentHealth = maxHealth;  // Mengatur health saat ini ke health maksimum saat game dimulai
-        UpdateHealthBar();  // Memperbarui UI health bar
+        currentHealth = maxHealth;  // Set current health to max health at the start of the game
+        UpdateHealthBar();  // Update the UI health bar
     }
 
     public void TakeDamage(int damage)
     {
         PlayerMove playerMove = GetComponent<PlayerMove>();
 
-        // Cek apakah pemain sedang melakukan roll
+        // Check if the player is rolling
         if (playerMove.isRolling)
         {
-            return;  // Jika ya, jangan tidak menerima damage
+            return;  // If yes, do not take damage
         }
 
-        currentHealth -= damage;  // Mengurangi health saat ini sebesar damage yang diterima
+        currentHealth -= damage;  // Reduce current health by the damage taken
         if (currentHealth < 0)
         {
-            currentHealth = 0;  // Memastikan health tidak kurang dari 0
+            currentHealth = 0;  // Ensure health does not go below 0
         }
-        UpdateHealthBar();  // Memperbarui UI health bar
+        UpdateHealthBar();  // Update the UI health bar
 
         if (currentHealth == 0)
         {
-            // Menangani kematian pemain, misalnya menghancurkan objek pemain
-            Destroy(gameObject);
+            // Handle player death
+            HandleDeath();
         }
     }
 
@@ -44,14 +45,22 @@ public class PlayerHealth : MonoBehaviour
         currentHealth += amount;
         if (currentHealth > maxHealth)
         {
-            currentHealth = maxHealth;  // health tidak melebihi maksimum
+            currentHealth = maxHealth;  // Ensure health does not exceed maximum
         }
-        UpdateHealthBar();  // Memperbarui UI health bar
+        UpdateHealthBar();  // Update the UI health bar
     }
 
     private void UpdateHealthBar()
     {
-        // Memperbarui fill amount dari UI health bar berdasarkan persentase health saat ini
+        // Update the fill amount of the UI health bar based on the current health percentage
         healthBar.fillAmount = (float)currentHealth / maxHealth;
+    }
+
+    private void HandleDeath()
+    {
+        gameOverMenu.ShowGameOver();  // Call the instance method
+        // Optionally, disable player controls or other components here
+        GetComponent<PlayerMove>().enabled = false;
+        // Optionally, display other game over effects here
     }
 }

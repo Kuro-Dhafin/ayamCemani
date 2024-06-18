@@ -17,9 +17,9 @@ TagManager:
   - Player
   - EnemyBullet
   - PlayerBullet
-  - 
-  - 
-  - 
+  - RollingPlayer
+  - Obstacle
+  - Enemy
   - 
   - 
   - 

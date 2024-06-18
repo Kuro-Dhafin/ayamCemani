@@ -15,8 +15,6 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     private float moveSpeed = 5.0f;  // Kecepatan gerakan pemain
 
-    private Vector3 originalScale;
-
     //test dash
     [SerializeField]
     private float dashSpeed = 10.0f;  // Kecepatan dash pemain
@@ -41,13 +39,15 @@ public class PlayerMove : MonoBehaviour
 
     private bool isPaused = false;  // Status apakah permainan sedang dijeda
 
+    private int originalLayer;  // Store the original layer of the player
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();  // Mendapatkan komponen Rigidbody2D dari GameObject
         playerHealth = GetComponent<PlayerHealth>();  // Mendapatkan komponen PlayerHealth dari GameObject
         animator = GetComponent<Animator>();  // Mendapatkan komponen Animator dari GameObject
         playerCollider = GetComponent<Collider2D>();
-        originalScale = transform.localScale;  // Simpan scale asli
+        originalLayer = gameObject.layer;  // Store the original layer
     }
 
     void Update()
@@ -86,7 +86,7 @@ public class PlayerMove : MonoBehaviour
             isRolling = true;
             isDashing = true;  // Aktifkan dash
             dashTime = dashDuration;  // Set durasi dash
-            playerCollider.enabled = false;  // Nonaktifkan collider pemain
+            gameObject.layer = LayerMask.NameToLayer("RollingPlayer");  // Change the layer
         }
 
         // Menonaktifkan roll jika waktu habis
@@ -96,8 +96,7 @@ public class PlayerMove : MonoBehaviour
             moveSpeed -= rollBoost;
             rollOnce = false;
             isRolling = false;
-            isDashing = false;
-            playerCollider.enabled = true;  // Aktifkan kembali collider pemain
+            gameObject.layer = originalLayer;  // Revert the layer
         }
 
         // Mengatur parameter isMoving di Animator berdasarkan input gerakan
@@ -110,7 +109,7 @@ public class PlayerMove : MonoBehaviour
         // Membalikkan sprite pemain berdasarkan arah gerakan
         if (moveInput.x != 0)
         {
-            transform.localScale = new Vector3(Mathf.Sign(moveInput.x) * originalScale.x, originalScale.y, originalScale.z);
+            transform.localScale = new Vector3(Mathf.Sign(moveInput.x), 1, 1);
         }
 
         // Menembak peluru saat tombol mouse kiri ditekan

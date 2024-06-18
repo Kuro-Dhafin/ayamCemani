@@ -19,11 +19,6 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private Transform firePoint;  // Titik tembak peluru
 
-    private Vector3 originalScale;
-
-    [SerializeField]
-    private GameObject healthItemPrefab;
-
     private Transform player;  // ref ke transform pemain
     private Rigidbody2D rb;  
     private bool facingRight = true;  // Menyimpan arah hadap musuh
@@ -40,7 +35,6 @@ public class Enemy : MonoBehaviour
         {
             player = playerObject.transform;  // Mencari pemain berdasarkan tag
         }
-        originalScale = transform.localScale;  // Simpan scale asli
     }
 
     void Update()
@@ -63,12 +57,12 @@ public class Enemy : MonoBehaviour
             // Mengubah arah hadap musuh berdasarkan posisi pemain
             if (player.position.x < transform.position.x && facingRight)
             {
-                transform.localScale = new Vector3(originalScale.x, originalScale.y, originalScale.z);
+                transform.localScale = new Vector3(-1, 1, 1);
                 facingRight = false;
             }
             else if (player.position.x > transform.position.x && !facingRight)
             {
-                transform.localScale = new Vector3(-originalScale.x, originalScale.y, originalScale.z);
+                transform.localScale = new Vector3(1, 1, 1);
                 facingRight = true;
             }
 
@@ -101,13 +95,7 @@ public class Enemy : MonoBehaviour
         // Jika musuh bertabrakan dengan peluru pemain, musuh akan hancur / destroy
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            Destroy(gameObject);
-            DropHealthItem();
+            Destroy(gameObject); 
         }
-    }
-    private void DropHealthItem()
-    {
-        Vector3 dropPosition = transform.position;
-        Instantiate(healthItemPrefab, transform.position, Quaternion.identity);
     }
 }

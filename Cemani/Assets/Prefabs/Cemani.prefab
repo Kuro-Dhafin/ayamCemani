@@ -44,8 +44,8 @@ GameObject:
   - component: {fileID: 4607696138137782589}
   - component: {fileID: 8978300655792951626}
   - component: {fileID: 3056661077350557919}
-  - component: {fileID: 2609343592627813793}
   - component: {fileID: 6816015921846217091}
+  - component: {fileID: 8794952239407704772}
   m_Layer: 0
   m_Name: Cemani
   m_TagString: Player
@@ -163,10 +163,10 @@ MonoBehaviour:
   bulletPrefabs: {fileID: 5776230876473887701, guid: 6ae9591dafabcce4081281df02e327ab, type: 3}
   firePoint: {fileID: 5613397751614956365}
   moveSpeed: 2.5
-  dashSpeed: 2.5
+  dashSpeed: 10
   dashDuration: 0.2
   rollBoost: 2
-  RollTime: 0.5
+  RollTime: 0
   isRolling: 0
 --- !u!61 &3056661077350557919
 BoxCollider2D:
@@ -213,21 +213,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.1487492, y: 0.13799874}
   m_EdgeRadius: 0
---- !u!114 &2609343592627813793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5876952705955818848}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edd9a9cdcc1f91443adeb9378e2fa0e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 100
-  healthBar: {fileID: 0}
 --- !u!95 &6816015921846217091
 Animator:
   serializedVersion: 5
@@ -249,3 +234,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8794952239407704772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5876952705955818848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2efc89ed48669d64f9cd9cd695c239de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefabs: {fileID: 5776230876473887701, guid: 6ae9591dafabcce4081281df02e327ab, type: 3}
+  firePoint: {fileID: 0}
+  moveSpeed: 5
+  dashSpeed: 10
+  dashDuration: 0.2
+  rollBoost: 2
+  RollTime: 0
+  isRolling: 0
