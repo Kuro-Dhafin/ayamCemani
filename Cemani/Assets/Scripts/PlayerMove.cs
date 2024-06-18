@@ -110,7 +110,8 @@ public class PlayerMove : MonoBehaviour
         // Membalikkan sprite pemain berdasarkan arah gerakan
         if (moveInput.x != 0)
         {
-            transform.localScale = new Vector3(Mathf.Sign(moveInput.x), 1, 1);
+            float localScaleX = Mathf.Abs(transform.localScale.x); // Mengambil nilai absolut dari skala X untuk mempertahankan ukuran
+            transform.localScale = new Vector3(Mathf.Sign(moveInput.x) * localScaleX, transform.localScale.y, transform.localScale.z);
         }
 
         // Menembak peluru saat tombol mouse kiri ditekan

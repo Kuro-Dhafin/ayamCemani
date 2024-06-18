@@ -1281,6 +1281,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cemani
       objectReference: {fileID: 0}
+    - target: {fileID: 6735142552344425781, guid: b060fc4a0abdfae4bbc9f280c8c3b2d6, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 1836858127}
     - target: {fileID: 8978300655792951626, guid: b060fc4a0abdfae4bbc9f280c8c3b2d6, type: 3}
       propertyPath: RollTime
       value: 1
