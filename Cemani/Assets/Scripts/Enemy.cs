@@ -19,6 +19,8 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private Transform firePoint;  // Titik tembak peluru
 
+    
+
     private Transform player;  // ref ke transform pemain
     private Rigidbody2D rb;  
     private bool facingRight = true;  // Menyimpan arah hadap musuh
@@ -105,7 +107,8 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet"))
         {
             //audioManager.PlayHurt(audioManager.hurt);  // Play hurt sound effect
-            Destroy(gameObject); 
+            Destroy(gameObject);
+           
         }
     }
 
@@ -116,4 +119,8 @@ public class Enemy : MonoBehaviour
             stageManager.UnregisterEnemy(gameObject);
         }
     }
+
+    
+
+
 }

@@ -25,6 +25,7 @@ public class StageManager : MonoBehaviour
 
         if (IsStageCleared())
         {
+            Debug.Log("Stage is cleared.");
             ShowStageClear();
             StartCoroutine(StageClearRoutine());
         }
@@ -68,7 +69,9 @@ public class StageManager : MonoBehaviour
 
     private bool IsStageCleared()
     {
+        Debug.Log("Checking if stage is cleared. Enemies left: " + enemies.Count);
         return enemies.Count == 0;
+        
     }
 
     public void ShowStageClear()
