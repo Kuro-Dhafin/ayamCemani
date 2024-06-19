@@ -15,7 +15,7 @@ public class StageManager : MonoBehaviour
     void Start()
     {
         AddEnemiesWithTag("Enemy");
-        AddEnemiesWithTag("EnemyWarga2");
+        //AddEnemiesWithTag("EnemyWarga2");
     }
 
     void Update()
@@ -35,7 +35,9 @@ public class StageManager : MonoBehaviour
         if (!enemies.Contains(enemy))
         {
             enemies.Add(enemy);
+            Debug.Log("Registered enemy: " + enemy.name);
         }
+        Debug.Log("Total enemies: " + enemies.Count);
     }
 
     public void UnregisterEnemy(GameObject enemy)
@@ -43,7 +45,9 @@ public class StageManager : MonoBehaviour
         if (enemies.Contains(enemy))
         {
             enemies.Remove(enemy);
+            Debug.Log("Unregistered enemy: " + enemy.name);
         }
+        Debug.Log("Total enemies: " + enemies.Count);
     }
 
     private void AddEnemiesWithTag(string tag)

@@ -331,6 +331,9 @@ MonoBehaviour:
   background: {fileID: 8300000, guid: 978b519fb09adb145bfa918d422270c1, type: 3}
   ButtonClick: {fileID: 8300000, guid: 82008faead43e544a94521248e64960c, type: 3}
   MouseHover: {fileID: 8300000, guid: 82008faead43e544a94521248e64960c, type: 3}
+  Shoot: {fileID: 0}
+  Walk: {fileID: 0}
+  hurt: {fileID: 0}
 --- !u!4 &172037380
 Transform:
   m_ObjectHideFlags: 0

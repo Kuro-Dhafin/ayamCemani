@@ -104,8 +104,16 @@ public class Enemy : MonoBehaviour
         // Jika musuh bertabrakan dengan peluru pemain, musuh akan hancur / destroy
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            audioManager.PlayHurt(audioManager.hurt);  // Play hurt sound effect
+            //audioManager.PlayHurt(audioManager.hurt);  // Play hurt sound effect
             Destroy(gameObject); 
+        }
+    }
+
+    void OnDestroy()
+    {
+        if (stageManager != null)
+        {
+            stageManager.UnregisterEnemy(gameObject);
         }
     }
 }
