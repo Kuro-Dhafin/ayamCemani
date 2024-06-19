@@ -25,16 +25,25 @@ public class Enemy : MonoBehaviour
     private float fireCooldown = 1.0f;  // Waktu jeda antara tembakan
     private float lastFireTime;  // Waktu akhir musuh menembak
     private Animator animator;  // ref ke komponen Animator
-
+    private StageManager stageManager;
+    private AudioManager audioManager;  // Reference to AudioManager
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();  // Mendapatkan komponen Rigidbody2D dari GameObject
         animator = GetComponent<Animator>();  // Mendapatkan komponen Animator dari GameObject
+        stageManager = FindObjectOfType<StageManager>();
+        if (stageManager != null)
+        {
+            stageManager.RegisterEnemy(gameObject);
+        }
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         if (playerObject != null)
         {
             player = playerObject.transform;  // Mencari pemain berdasarkan tag
         }
+
+        audioManager = AudioManager.instance;  // Get the instance of AudioManager
     }
 
     void Update()
@@ -95,6 +104,7 @@ public class Enemy : MonoBehaviour
         // Jika musuh bertabrakan dengan peluru pemain, musuh akan hancur / destroy
         if (collision.gameObject.CompareTag("Bullet"))
         {
+            audioManager.PlayHurt(audioManager.hurt);  // Play hurt sound effect
             Destroy(gameObject); 
         }
     }

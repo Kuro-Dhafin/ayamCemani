@@ -37,11 +37,6 @@ public class GameOverMenu : MonoBehaviour
         Time.timeScale = 1; // Reload the current scene
     }
 
-    public void QuitToMainMenu()
-    {
-        SceneManager.LoadScene(MainMenu, LoadSceneMode.Single); // Load the main menu scene
-        Time.timeScale = 1;
-    }
      public bool IsGameOverActive()
     {
         return GameOver.activeSelf;

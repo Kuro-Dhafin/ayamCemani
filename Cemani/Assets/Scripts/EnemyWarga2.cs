@@ -33,12 +33,18 @@ public class EnemyWarga2 : MonoBehaviour
     private float fireCooldown = 1.0f;  // Waktu jeda antara tembakan
     private float lastFireTime;  // Waktu akhir musuh menembak
     private Animator animator;  // ref ke komponen Animator
+    private StageManager stageManager;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();  // Mendapatkan komponen Rigidbody2D dari GameObject
         rb.isKinematic = true;
         animator = GetComponent<Animator>();  // Mendapatkan komponen Animator dari GameObject
+        stageManager = FindObjectOfType<StageManager>();
+        if (stageManager != null)
+        {
+            stageManager.RegisterEnemy(gameObject);
+        }
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         if (playerObject != null)
         {
@@ -114,5 +120,12 @@ public class EnemyWarga2 : MonoBehaviour
     {
         Vector3 dropPosition = transform.position;
         Instantiate(healthItemPrefab, transform.position, Quaternion.identity);
+    }
+    void OnDestroy()
+    {
+        if (stageManager != null)
+        {
+            stageManager.UnregisterEnemy(gameObject);
+        }
     }
 }

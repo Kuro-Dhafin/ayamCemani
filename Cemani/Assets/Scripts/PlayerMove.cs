@@ -1,25 +1,16 @@
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
 public class PlayerMove : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject bulletPrefabs;  // Prefab peluru yang akan ditembakkan oleh pemain
-    [SerializeField]
-    private Transform firePoint;  // Titik tembak peluru
+    [SerializeField] private GameObject bulletPrefabs;  // Prefab peluru yang akan ditembakkan oleh pemain
+    [SerializeField] private Transform firePoint;  // Titik tembak peluru
 
-    [SerializeField]
-    private float moveSpeed = 5.0f;  // Kecepatan gerakan pemain
+    [SerializeField] private float moveSpeed = 5.0f;  // Kecepatan gerakan pemain
 
     //test dash
-    [SerializeField]
-    private float dashSpeed = 10.0f;  // Kecepatan dash pemain
-    [SerializeField]
-    private float dashDuration = 0.2f;  // Durasi dash pemain
+    [SerializeField] private float dashSpeed = 10.0f;  // Kecepatan dash pemain
+    [SerializeField] private float dashDuration = 0.2f;  // Durasi dash pemain
     private bool isDashing = false;  // Status apakah pemain sedang dash
     private float dashTime;  // Waktu tersisa untuk dash
     private Collider2D playerCollider;
@@ -32,7 +23,7 @@ public class PlayerMove : MonoBehaviour
 
     public bool isRolling = false;
 
-    private Rigidbody2D rb;  
+    private Rigidbody2D rb;
     private Vector2 moveInput;  // Input gerakan dari pemain
     private Vector2 mousePos;  // Posisi mouse di dunia game
     private PlayerHealth playerHealth;  // Referensi ke komponen PlayerHealth
@@ -42,6 +33,10 @@ public class PlayerMove : MonoBehaviour
 
     private int originalLayer;  // Store the original layer of the player
 
+    private AudioManager audioManager;  // Reference to AudioManager
+    private bool isWalking = false;  // Flag to track if walking sound is playing
+    private Coroutine walkingSoundCoroutine;  // Coroutine reference for delaying walking sound
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();  // Mendapatkan komponen Rigidbody2D dari GameObject
@@ -49,6 +44,7 @@ public class PlayerMove : MonoBehaviour
         animator = GetComponent<Animator>();  // Mendapatkan komponen Animator dari GameObject
         playerCollider = GetComponent<Collider2D>();
         originalLayer = gameObject.layer;  // Store the original layer
+        audioManager = AudioManager.instance;  // Get the instance of AudioManager
     }
 
     void Update()
@@ -104,6 +100,19 @@ public class PlayerMove : MonoBehaviour
         bool IsMoving = moveInput != Vector2.zero;
         animator.SetBool("IsMoving", IsMoving);
 
+        // Play the walking sound when moving
+        if (IsMoving && !isWalking)
+        {
+            if (walkingSoundCoroutine != null)
+                StopCoroutine(walkingSoundCoroutine);  // Stop previous coroutine if running
+
+            walkingSoundCoroutine = StartCoroutine(DelayedWalkingSound());
+        }
+        else if (!IsMoving)
+        {
+            isWalking = false;
+        }
+
         // Mendapatkan posisi mouse 
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
@@ -118,6 +127,7 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Shoot();
+            audioManager.PlayShoot();
         }
     }
 
@@ -167,5 +177,13 @@ public class PlayerMove : MonoBehaviour
     {
         isPaused = pause;
         rb.velocity = Vector2.zero;  // Stop player movement when paused
+    }
+
+    // Coroutine to play walking sound after a delay
+    private IEnumerator DelayedWalkingSound()
+    {
+        isWalking = true;  // Set walking flag to true
+        audioManager.PlayWalk();
+        yield return new WaitForSeconds(0.3f);  // Adjust delay time as needed
     }
 }
