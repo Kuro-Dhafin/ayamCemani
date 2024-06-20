@@ -38,5 +38,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cemani1.unity
     guid: 7fe593c6ea47b0a4bbcdc31dce805f17
+  - enabled: 1
+    path: Assets/Scenes/Cemani vs Boss.unity
+    guid: fa11856829bb94c43a8f55e7a6d78a1f
   m_configObjects:
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: e7607f33f69bf8343850c4237e0a1005, type: 2}
