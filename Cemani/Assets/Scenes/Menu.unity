@@ -973,7 +973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 297cfb586a8b06d438d416b65f9e8644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Game: Stage1
+  Game: Cemani1
   Options: Options
   Credits: Credits
 --- !u!114 &925086105
