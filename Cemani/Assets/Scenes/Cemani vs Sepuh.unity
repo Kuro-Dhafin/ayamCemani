@@ -828,7 +828,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - {fileID: 467830297}
-  nextStageName: Cemani2
+  nextStageName: Cemani vs Boss
   stageClearUI: {fileID: 1384393039}
 --- !u!4 &627747953
 Transform:
