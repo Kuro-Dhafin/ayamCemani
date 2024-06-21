@@ -498,6 +498,14 @@ PrefabInstance:
       propertyPath: horizontalRange
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8348414377287629545, guid: 3c67df1ea978adc488d9ee856f8e8969, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8348414377287629545, guid: 3c67df1ea978adc488d9ee856f8e8969, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 256139121
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
